@@ -7,6 +7,14 @@ class Article {
   }
 }
 
+class CartArticle {
+  constructor(title, price, imgUrl) {
+    this.title = title;
+    this.price = price;
+    this.imgUrl = imgUrl;
+  }
+}
+
 const articles = [
   new Article(
     "Arkham Horror",
@@ -54,13 +62,13 @@ const articles = [
     "Dune",
     699,
     "A strategic negotiation game set in the universe of Frank Herbert's Dune, players take on the roles of different factions competing for control of the desert planet Arrakis.",
-    "https://www.spelexperten.com/bilder/artiklar/zoom/GF9DUNE01_1.jpg"
+    "https://www.spelexperten.com/bilder/artiklar/zoom/GFDUNE01-BN_1.jpg"
   ),
   new Article(
     "Eclipse",
-    699,
+    1599,
     "A strategic space empire game, players explore the galaxy, expand their empires, and compete for control of resources and territory.",
-    "https://www.spelexperten.com/bilder/artiklar/zoom/LVL1001_1.jpg"
+    "https://m.media-amazon.com/images/I/611a3s0AUuL._AC_UF894,1000_QL80_.jpg"
   ),
   new Article(
     "Everdell",
@@ -155,6 +163,8 @@ const articles = [
   ),
 ];
 
+const shoppingCartArr = [];
+
 const articlesList = document.querySelector("#articles");
 const shoppingCartList = document.querySelector("#shoppingCart");
 
@@ -229,11 +239,21 @@ function applyStyles(
   cardBtn.classList.add("btn", "btn-outline-primary");
 }
 
+//påbörjat men fungerar absolut inte
 function addItemToCart(title, price, img) {
-  const li = document.createElement("li");
-  li.classList.add("list-group-item");
-  li.innerText = `${title.innerText} - ${price.innerText}`;
+  const cartArticle = new CartArticle(
+    title.innerText,
+    price.innerText,
+    img.src
+  );
+  shoppingCartArr.push(cartArticle);
 
-  console.log(li);
-  shoppingCartList.appendChild(li);
+  for (const cartItem of shoppingCartArr) {
+    const li = document.createElement("li");
+    li.classList.add("list-group-item");
+    li.innerText = `${cartItem.title} - ${cartItem.price}`;
+
+    console.log(li);
+    shoppingCartList.appendChild(li);
+  }
 }

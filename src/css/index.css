@@ -1,0 +1,10 @@
+img{
+    margin: 1em;
+    max-width: 100%;
+    max-height: auto;
+}
+
+p{
+    margin: 1em;
+    text-align: justify;
+}

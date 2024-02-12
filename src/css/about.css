@@ -1,4 +1,36 @@
-.map-container{
-    margin: 1em;
-    
+.gmap_canvas {
+  overflow: hidden;
+  background: none !important;
+  height: 500px;
+  width: 600px;
+}
+
+.mapouter {
+  position: relative;
+  text-align: right;
+  height: 500px;
+  width: 600px;
+}
+
+#navbar-header {
+  background-color: rgba(84, 182, 180, 255);
+}
+
+.map-container {
+  margin: 1em;
+  justify-content: center;
+}
+
+p {
+  margin: 1em;
+  text-align: justify;
+}
+
+a {
+  color: rgba(84, 182, 180, 255);
+  text-decoration: none;
+}
+
+.teal-text {
+  color: rgba(84, 182, 180, 255);
 }

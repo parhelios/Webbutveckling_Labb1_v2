@@ -1,4 +1,8 @@
-img{
-    min-width: 300px;
-    max-width: 300px;
+#navbar-header {
+  background-color: rgba(84, 182, 180, 255);
+}
+
+img {
+  min-width: 300px;
+  max-width: 300px;
 }

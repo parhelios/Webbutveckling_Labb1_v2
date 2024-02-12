@@ -8,3 +8,7 @@ p{
     margin: 1em;
     text-align: justify;
 }
+
+#navbar-header{
+    background-color: rgba(84, 182, 180, 255);
+}

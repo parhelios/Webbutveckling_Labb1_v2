@@ -81,3 +81,5 @@ for (const game of articles) {
 
   articlesList.appendChild(li);
 }
+
+function addItemToCart(title, price, img) {}

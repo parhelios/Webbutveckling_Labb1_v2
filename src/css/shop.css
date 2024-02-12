@@ -3,6 +3,17 @@
 }
 
 img {
+  min-width: 200px;
+  max-width: 200px;
+}
+
+#articles {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#articles li {
+  flex: 0 0 25%;
+  max-width: 25%;
   min-width: 300px;
-  max-width: 300px;
 }

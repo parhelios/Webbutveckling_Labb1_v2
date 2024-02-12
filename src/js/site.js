@@ -32,9 +32,28 @@ const articles = [
     "A charming worker placement game set in a whimsical woodland, players construct their own cities of anthropomorphic creatures, balancing resources and special abilities for maximum points.",
     "../content/bg_covers/everdell_front.jpg"
   ),
+  new Article(
+    "Gloomhaven",
+    999,
+    "A legacy-style cooperative campaign game, players take on the roles of wandering adventurers with their own special skills and motives, exploring a dark and dangerous world.",
+    "../content/bg_covers/gloomhaven_front.jpg"
+  ),
+  new Article(
+    "Terraforming Mars",
+    599,
+    "A strategic economic game set on the Red Planet, players compete to transform Mars into a habitable world, balancing resources and infrastructure for maximum points.",
+    "https://www.proshop.se/Images/915x900/2806058_694524a0294e.jpg"
+  ),
+  new Article(
+    "Twilight Struggle",
+    499,
+    "A two-player strategy game set during the Cold War, players take on the roles of the United States and the Soviet Union, competing for influence and control across the globe.",
+    "https://www.agorajeux.com/27723-large_default/twilight-struggle-version-francaise.jpg"
+  ),
 ];
 
 const articlesList = document.querySelector("#articles");
+const shoppingCartList = document.querySelector("#shoppingCart");
 
 console.log(articles);
 
@@ -48,6 +67,48 @@ for (const game of articles) {
   const cardText = document.createElement("p");
   const cardBtn = document.createElement("a");
 
+  applyStyles(
+    li,
+    card,
+    cardImg,
+    cardBody,
+    cardTitle,
+    cardPrice,
+    cardText,
+    cardBtn
+  );
+
+  cardImg.setAttribute("src", game.imgUrl);
+  cardPrice.innerText = `Price: ${game.price} SEK`;
+  cardTitle.innerText = game.title;
+  cardText.innerText = game.info;
+  cardBtn.innerText = "Add to cart";
+
+  cardBtn.onclick = () => {
+    addItemToCart(cardTitle, cardPrice, cardImg);
+  };
+
+  cardBody.appendChild(cardTitle);
+  cardBody.appendChild(cardPrice);
+  cardBody.appendChild(cardText);
+  cardBody.appendChild(cardBtn);
+  card.appendChild(cardImg);
+  card.appendChild(cardBody);
+  li.appendChild(card);
+
+  articlesList.appendChild(li);
+}
+
+function applyStyles(
+  li,
+  card,
+  cardImg,
+  cardBody,
+  cardTitle,
+  cardPrice,
+  cardText,
+  cardBtn
+) {
   li.classList.add(
     "list-group-item",
     "bg-dark",
@@ -63,23 +124,13 @@ for (const game of articles) {
   cardPrice.classList.add("card-title");
   cardText.classList.add("card-text");
   cardBtn.classList.add("btn", "btn-outline-primary");
-
-  cardBtn.innerText = "Add to cart";
-
-  cardImg.setAttribute("src", game.imgUrl);
-  cardPrice.innerText = `Price: ${game.price} SEK`;
-  cardTitle.innerText = game.title;
-  cardText.innerText = game.info;
-
-  cardBody.appendChild(cardTitle);
-  cardBody.appendChild(cardPrice);
-  cardBody.appendChild(cardText);
-  cardBody.appendChild(cardBtn);
-  card.appendChild(cardImg);
-  card.appendChild(cardBody);
-  li.appendChild(card);
-
-  articlesList.appendChild(li);
 }
 
-function addItemToCart(title, price, img) {}
+function addItemToCart(title, price, img) {
+  const li = document.createElement("li");
+  li.classList.add("list-group-item");
+  li.innerText = `${title.innerText} - ${price.innerText}`;
+
+  console.log(li);
+  shoppingCartList.appendChild(li);
+}

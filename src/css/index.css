@@ -1,14 +1,14 @@
-img{
-    margin: 1em;
-    max-width: 100%;
-    max-height: auto;
+img {
+  margin: 1em;
+  max-width: 100%;
+  max-height: auto;
 }
 
-p{
-    margin: 1em;
-    text-align: justify;
+p {
+  margin: 1em;
+  text-align: justify;
 }
 
-#navbar-header{
-    background-color: rgba(84, 182, 180, 255);
+#navbar-header {
+  background-color: rgba(84, 182, 180, 255);
 }

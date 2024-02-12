@@ -15,16 +15,52 @@ const articles = [
     "https://m.media-amazon.com/images/I/61wUiOvhH2L._AC_SL1075_.jpg"
   ),
   new Article(
-    "Wingspan",
-    699,
-    "A visually stunning engine-building game centered around bird watching, players attract and care for a variety of bird species to score points.",
-    "https://www.spelexperten.com/bilder/artiklar/zoom/STM910SE_1.jpg"
-  ),
-  new Article(
     "Brass Birmingham",
     649,
     "A strategic economic board game set in the Industrial Revolution, players build industries, develop networks, and navigate the competitive landscape for wealth and success.",
     "../content/bg_covers/brass_birmingham_front.png"
+  ),
+  new Article(
+    "Carcassonne",
+    299,
+    "A classic tile-laying game set in the medieval French countryside, players build cities, roads, and fields, and compete to claim the most points.",
+    "../content/bg_covers/carcassonne_front.jpg"
+  ),
+  new Article(
+    "Cascadia",
+    599,
+    "A strategic tile-laying game set in the Pacific Northwest, players match and arrange habitats to attract wildlife and score points.",
+    "../content/bg_covers/cascadia_front.jpg"
+  ),
+  new Article(
+    "Catan",
+    399,
+    "A classic resource management game set on the island of Catan, players build settlements, roads, and cities, and compete to claim the most points.",
+    "../content/bg_covers/catan_front.png"
+  ),
+  new Article(
+    "Dead of Winter",
+    499,
+    "A cooperative survival game set in a post-apocalyptic world, players work together to gather resources, complete objectives, and fend off the undead.",
+    "../content/bg_covers/dead_of_winter_front.jpg"
+  ),
+  new Article(
+    "Dominion",
+    399,
+    "A deck-building game set in a medieval fantasy world, players use their cards to gather resources, build their kingdoms, and compete for victory points.",
+    "../content/bg_covers/dominion_front.jpg"
+  ),
+  new Article(
+    "Dune",
+    699,
+    "A strategic negotiation game set in the universe of Frank Herbert's Dune, players take on the roles of different factions competing for control of the desert planet Arrakis.",
+    "https://www.spelexperten.com/bilder/artiklar/zoom/GF9DUNE01_1.jpg"
+  ),
+  new Article(
+    "Eclipse",
+    699,
+    "A strategic space empire game, players explore the galaxy, expand their empires, and compete for control of resources and territory.",
+    "https://www.spelexperten.com/bilder/artiklar/zoom/LVL1001_1.jpg"
   ),
   new Article(
     "Everdell",
@@ -33,10 +69,53 @@ const articles = [
     "../content/bg_covers/everdell_front.jpg"
   ),
   new Article(
+    "Freedom: The Underground Railroad",
+    499,
+    "A cooperative strategy game set during the American Civil War, players work together to guide slaves to freedom along the Underground Railroad.",
+    "../content/bg_covers/freedom_the_underground_railroad_front.jpg"
+  ),
+  new Article(
     "Gloomhaven",
     999,
     "A legacy-style cooperative campaign game, players take on the roles of wandering adventurers with their own special skills and motives, exploring a dark and dangerous world.",
     "../content/bg_covers/gloomhaven_front.jpg"
+  ),
+  new Article(
+    "Mansions of Madness",
+    999,
+    "A cooperative horror game set in the world of H.P. Lovecraft's Cthulhu Mythos, players explore haunted mansions, solve mysteries, and battle otherworldly creatures.",
+    "../content/bg_covers/mansions_of_madness_front.jpg"
+  ),
+  new Article(
+    "Nemesis",
+    999,
+    "A semi-cooperative survival game set on a spaceship, players work together to survive an alien infestation, but also compete to achieve their own secret objectives.",
+    "../content/bg_covers/nemesis_front.jpg"
+  ),
+
+  new Article(
+    "Root",
+    699,
+    "A strategic asymmetrical game set in a woodland, players take on the roles of different animal factions, each with their own special abilities and goals, competing for control and dominance.",
+    "../content/bg_covers/root_front.png"
+  ),
+  new Article(
+    "Pandemic",
+    299,
+    "A cooperative board game set in a world threatened by deadly diseases, players work together to contain outbreaks and find cures before it's too late.",
+    "https://www.spelexperten.com/bilder/artiklar/zoom/ZMG71100_1.jpg"
+  ),
+  new Article(
+    "Scythe",
+    899,
+    "A strategic economic game set in an alternate history 1920s Europe, players build empires, develop technologies, and compete for control of territory and resources.",
+    "https://www.spelexperten.com/bilder/artiklar/zoom/STM600_1.jpg"
+  ),
+  new Article(
+    "Spirit Island",
+    899,
+    "A cooperative strategy game set on a mystical island, players take on the roles of powerful spirits, working together to defend the island from invaders and colonizers.",
+    "../content/bg_covers/spirit_island_front.jpg"
   ),
   new Article(
     "Terraforming Mars",
@@ -45,10 +124,34 @@ const articles = [
     "https://www.proshop.se/Images/915x900/2806058_694524a0294e.jpg"
   ),
   new Article(
-    "Twilight Struggle",
-    499,
-    "A two-player strategy game set during the Cold War, players take on the roles of the United States and the Soviet Union, competing for influence and control across the globe.",
-    "https://www.agorajeux.com/27723-large_default/twilight-struggle-version-francaise.jpg"
+    "The Crew",
+    199,
+    "A cooperative trick-taking game set in space, players work together to complete missions and communicate without speaking, using only the cards in their hands.",
+    "../content/bg_covers/the_crew_front.jpg"
+  ),
+  new Article(
+    "Tyrants of the Underdark",
+    799,
+    "A strategic deck-building game set in the Dungeons & Dragons universe, players recruit minions, build their armies, and compete for control of the Underdark.",
+    "../content/bg_covers/tyrants_of_the_underdark_front.jpg"
+  ),
+  new Article(
+    "Unfathomable",
+    899,
+    "A semi-cooperative game set on a luxury ocean liner, players work together to survive a series of disasters, but also compete to achieve their own secret objectives.",
+    "../content/bg_covers/unfathomable_front.jpg"
+  ),
+  new Article(
+    "Wingspan",
+    699,
+    "A visually stunning engine-building game centered around bird watching, players attract and care for a variety of bird species to score points.",
+    "https://www.spelexperten.com/bilder/artiklar/zoom/STM910SE_1.jpg"
+  ),
+  new Article(
+    "Zombicide",
+    699,
+    "A cooperative survival game set in a world overrun by zombies, players work together to complete missions, gather resources, and fend off the undead.",
+    "../content/bg_covers/zombicide_front.jpg"
   ),
 ];
 

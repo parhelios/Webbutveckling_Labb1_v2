@@ -248,12 +248,10 @@ function addItemToCart(title, price, img) {
   );
   shoppingCartArr.push(cartArticle);
 
-  for (const cartItem of shoppingCartArr) {
-    const li = document.createElement("li");
-    li.classList.add("list-group-item");
-    li.innerText = `${cartItem.title} - ${cartItem.price}`;
+  const li = document.createElement("li");
+  li.classList.add("list-group-item");
+  li.innerText = `${cartItem.title} - ${cartItem.price}`;
 
-    console.log(li);
-    shoppingCartList.appendChild(li);
-  }
+  shoppingCartList.appendChild(li);
+  console.log(li);
 }

@@ -166,7 +166,6 @@ const articles = [
 const shoppingCartArr = [];
 
 const articlesList = document.querySelector("#articles");
-const shoppingCartList = document.querySelector("#shoppingCart");
 
 console.log(articles);
 
@@ -313,6 +312,8 @@ function applyStyles(
 
 //påbörjat men fungerar absolut inte
 function addItemToCart(title, price, img) {
+  const shoppingCartList = document.querySelector("#shoppingCartDisplayList");
+
   const cartArticle = new CartArticle(
     title.innerText,
     price.innerText,
@@ -322,7 +323,7 @@ function addItemToCart(title, price, img) {
 
   const li = document.createElement("li");
   li.classList.add("list-group-item");
-  li.innerText = `${cartItem.title} - ${cartItem.price}`;
+  li.innerText = `${cartArticle.title} - ${cartArticle.price}`;
 
   shoppingCartList.appendChild(li);
   console.log(li);

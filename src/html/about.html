@@ -9,6 +9,8 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="../css/about.css" />
+    <link rel="stylesheet" href="../css/common.css" />
+
     <script defer src="../js/site.js"></script>
     <title>About Us</title>
   </head>
@@ -46,9 +48,10 @@
               <li class="nav-item">
                 <button
                   type="button"
-                  class="btn btn-info"
+                  class="btn btn-info nav-link disabled"
                   data-bs-toggle="modal"
                   data-bs-target="#shoppingCartModal"
+                  aria-disabled="true"
                 >
                   Shopping Cart
                 </button>
@@ -61,7 +64,7 @@
                     class="nav-link active"
                     aria-current="page"
                     href="./index.html"
-                    ><h3>Kville Brädspelscafé</h3>
+                    ><h3 class="nav-h3">Kville Brädspelscafé</h3>
                   </a>
                 </span>
               </li>

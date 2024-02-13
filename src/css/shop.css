@@ -21,3 +21,7 @@ img {
 .spacer {
   height: 80px;
 }
+
+p {
+  font-size: 0.9em;
+}

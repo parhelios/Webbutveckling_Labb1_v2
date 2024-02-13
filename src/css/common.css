@@ -1,0 +1,15 @@
+@import url(https://fonts.googleapis.com/css?family=Quattrocento);
+@import url(https://fonts.googleapis.com/css?family=Mulish);
+@import url(https://fonts.googleapis.com/css?family=Quicksand);
+
+.nav-h3 {
+  font-family: "Quattrocento", serif;
+  font-size: 3em;
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+p {
+  font-family: "Quicksand", sans-serif;
+}

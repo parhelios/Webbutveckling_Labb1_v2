@@ -238,7 +238,7 @@ for (const game of articles) {
   // console.log(modalIdTitle);
 
   cardImg.setAttribute("src", game.imgUrl);
-  cardPrice.innerText = `Price: ${game.price} SEK`;
+  cardPrice.innerHTML = `<b>Price:</b> ${game.price} SEK`;
   cardTitle.innerText = game.title;
   cardText.innerText = game.info;
   cardBtn.innerText = "Add to cart";

@@ -233,11 +233,9 @@ for (const game of articles) {
     closeButtonFooter2
   );
 
-  // getBggData(game.title);
+  getBggData(game.title);
 
   const modalIdTitle = game.title.replace(/[&\/\\#, +()$~%.'":*?<>{}]/g, "_");
-
-  // console.log(modalIdTitle);
 
   cardImg.setAttribute("src", game.imgUrl);
   cardPrice.innerHTML = `<b>Price:</b> ${game.price} SEK`;
@@ -443,29 +441,33 @@ function removeItemFromCart(title) {
 //   console.log(gameData);
 // }
 
-// async function getBggData(title) {
-//   const url = "https://boardgamegeek.com/xmlapi/search?search=";
-//   const formattedTitle = encodeURIComponent(title);
-//   const urlEnd = "&exact=1";
-//   const gameUrl = `${url}${formattedTitle}${urlEnd}`;
+async function getBggData(title) {
+  const url = "https://boardgamegeek.com/xmlapi/search?search=";
 
-//   try {
-//     const response = await fetch(gameUrl);
-//     const text = await response.text();
-//     const parser = new DOMParser();
-//     const xmlDoc = parser.parseFromString(text, "text/xml");
+  const formattedTitle = encodeURIComponent(title);
+  const urlEnd = "&exact=1";
+  const gameUrl = `${url}${formattedTitle}${urlEnd}`;
 
-//     const gameId = xmlDoc.querySelector("item").getAttribute("id");
-//     const gameDataUrl = `https://boardgamegeek.com/xmlapi/boardgame/${gameId}`;
+  const response = await fetch(gameUrl, {
+    method: "GET",
+    mode: "no-cors",
+  });
+  const data = await response.text();
 
-//     const gameResponse = await fetch(gameDataUrl);
-//     const gameText = await gameResponse.text();
-//     const gameXmlDoc = parser.parseFromString(gameText, "text/xml");
+  console.log(data);
 
-//     // Here, you can extract and process the data from gameXmlDoc as needed
+  const parser = new DOMParser();
+  const xmlDoc = parser.parseFromString(data, "text/xml");
+  const objectID = xmlDoc
+    .getElementsByName("boardgame")[1]
+    .getAttribute("objectid");
 
-//     console.log(gameXmlDoc);
-//   } catch (error) {
-//     console.error("Error fetching data:", error);
-//   }
-// }
+  const gameDataUrl = `https://boardgamegeek.com/xmlapi/boardgame/${objectID}?stats=1`;
+
+  const response2 = await fetch(gameDataUrl);
+  const data2 = await response2.text();
+
+  const xmlDoc2 = parser.parseFromString(data2, "text/xml");
+
+  console.log(xmlDoc2);
+}

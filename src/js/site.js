@@ -171,6 +171,7 @@ const shoppingCartList = document.querySelector("#shoppingCart");
 console.log(articles);
 
 for (const game of articles) {
+  //Skapa kortet
   const li = document.createElement("li");
   const card = document.createElement("div");
   const cardImg = document.createElement("img");
@@ -178,7 +179,18 @@ for (const game of articles) {
   const cardTitle = document.createElement("h5");
   const cardPrice = document.createElement("h7");
   const cardText = document.createElement("p");
-  const cardBtn = document.createElement("a");
+  const cardBtn = document.createElement("button");
+
+  //Skapa modal
+  const modalContainer = document.createElement("div");
+  const modalDialog = document.createElement("div");
+  const modalContent = document.createElement("div");
+  const modalHeader = document.createElement("div");
+  const modalTitle = document.createElement("h1");
+  const closeButton = document.createElement("button");
+  const modalBody = document.createElement("div");
+  const modalFooter = document.createElement("div");
+  const closeButtonFooter = document.createElement("button");
 
   applyStyles(
     li,
@@ -188,8 +200,19 @@ for (const game of articles) {
     cardTitle,
     cardPrice,
     cardText,
-    cardBtn
+    cardBtn,
+    modalContainer,
+    modalDialog,
+    modalContent,
+    modalHeader,
+    modalTitle,
+    closeButton,
+    modalBody,
+    modalFooter,
+    closeButtonFooter
   );
+
+  const modalIdTitle = game.title.replaceAll(" ", "_");
 
   cardImg.setAttribute("src", game.imgUrl);
   cardPrice.innerText = `Price: ${game.price} SEK`;
@@ -197,8 +220,26 @@ for (const game of articles) {
   cardText.innerText = game.info;
   cardBtn.innerText = "Add to cart";
 
+  cardBtn.setAttribute("data-bs-target", `#shopModal_${modalIdTitle}`);
+  cardBtn.setAttribute("data-bs-toggle", "modal");
+
+  modalContainer.setAttribute("id", "shopModal_" + modalIdTitle);
+  modalContainer.setAttribute("data-bs-backdrop", "static");
+  modalContainer.setAttribute("data-bs-keyboard", "false");
+  modalContainer.setAttribute("tabindex", "-1");
+  modalContainer.setAttribute("aria-labelledby", "staticBackdropLabel");
+  modalContainer.setAttribute("aria-hidden", "true");
+  modalTitle.id = "staticBackdropLabel";
+  modalTitle.textContent = "Modal title";
+  closeButton.type = "button";
+  closeButton.setAttribute("data-bs-dismiss", "modal");
+  closeButton.setAttribute("aria-label", "Close");
+  modalBody.innerText = `${game.title} has been added to your cart!`;
+  closeButtonFooter.setAttribute("data-bs-dismiss", "modal");
+  closeButtonFooter.textContent = "Close";
+
   cardBtn.onclick = () => {
-    addItemToCart(cardTitle, cardPrice, cardImg);
+    addItemToCart(game.title, game.price, game.imgUrl);
   };
 
   cardBody.appendChild(cardTitle);
@@ -207,8 +248,18 @@ for (const game of articles) {
   cardBody.appendChild(cardBtn);
   card.appendChild(cardImg);
   card.appendChild(cardBody);
-  li.appendChild(card);
 
+  modalHeader.appendChild(modalTitle);
+  modalHeader.appendChild(closeButton);
+  modalFooter.appendChild(closeButtonFooter);
+  modalContent.appendChild(modalHeader);
+  modalContent.appendChild(modalBody);
+  modalContent.appendChild(modalFooter);
+  modalDialog.appendChild(modalContent);
+  modalContainer.appendChild(modalDialog);
+
+  li.appendChild(card);
+  li.appendChild(modalContainer);
   articlesList.appendChild(li);
 }
 
@@ -220,7 +271,16 @@ function applyStyles(
   cardTitle,
   cardPrice,
   cardText,
-  cardBtn
+  cardBtn,
+  modalContainer,
+  modalDialog,
+  modalContent,
+  modalHeader,
+  modalTitle,
+  closeButton,
+  modalBody,
+  modalFooter,
+  closeButtonFooter
 ) {
   li.classList.add(
     "list-group-item",
@@ -237,6 +297,16 @@ function applyStyles(
   cardPrice.classList.add("card-title");
   cardText.classList.add("card-text");
   cardBtn.classList.add("btn", "btn-outline-primary");
+
+  modalContainer.classList.add("modal", "fade");
+  modalDialog.classList.add("modal-dialog", "modal-dialog-centered");
+  modalContent.classList.add("modal-content");
+  modalHeader.classList.add("modal-header");
+  modalTitle.classList.add("modal-title", "fs-5");
+  closeButton.classList.add("btn-close");
+  modalBody.classList.add("modal-body");
+  modalFooter.classList.add("modal-footer");
+  closeButtonFooter.classList.add("btn", "btn-primary");
 }
 
 //påbörjat men fungerar absolut inte

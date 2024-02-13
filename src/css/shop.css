@@ -17,3 +17,7 @@ img {
   max-width: 25%;
   min-width: 300px;
 }
+
+.spacer {
+  height: 80px;
+}

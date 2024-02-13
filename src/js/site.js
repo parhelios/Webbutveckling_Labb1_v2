@@ -179,8 +179,9 @@ for (const game of articles) {
   const cardPrice = document.createElement("h7");
   const cardText = document.createElement("p");
   const cardBtn = document.createElement("button");
+  const cardInfoBtn = document.createElement("button");
 
-  //Skapa modal
+  //Skapa shopping modal
   const modalContainer = document.createElement("div");
   const modalDialog = document.createElement("div");
   const modalContent = document.createElement("div");
@@ -191,6 +192,17 @@ for (const game of articles) {
   const modalFooter = document.createElement("div");
   const closeButtonFooter = document.createElement("button");
 
+  //Skapa info modal
+  const modalContainer2 = document.createElement("div");
+  const modalDialog2 = document.createElement("div");
+  const modalContent2 = document.createElement("div");
+  const modalHeader2 = document.createElement("div");
+  const modalTitle2 = document.createElement("h1");
+  const closeButton2 = document.createElement("button");
+  const modalBody2 = document.createElement("div");
+  const modalFooter2 = document.createElement("div");
+  const closeButtonFooter2 = document.createElement("button");
+
   applyStyles(
     li,
     card,
@@ -200,6 +212,7 @@ for (const game of articles) {
     cardPrice,
     cardText,
     cardBtn,
+    cardInfoBtn,
     modalContainer,
     modalDialog,
     modalContent,
@@ -208,7 +221,16 @@ for (const game of articles) {
     closeButton,
     modalBody,
     modalFooter,
-    closeButtonFooter
+    closeButtonFooter,
+    modalContainer2,
+    modalDialog2,
+    modalContent2,
+    modalHeader2,
+    modalTitle2,
+    closeButton2,
+    modalBody2,
+    modalFooter2,
+    closeButtonFooter2
   );
 
   const modalIdTitle = game.title.replace(/[&\/\\#, +()$~%.'":*?<>{}]/g, "_");
@@ -220,9 +242,12 @@ for (const game of articles) {
   cardTitle.innerText = game.title;
   cardText.innerText = game.info;
   cardBtn.innerText = "Add to cart";
+  cardInfoBtn.innerText = "More info";
 
   cardBtn.setAttribute("data-bs-target", `#shopModal_${modalIdTitle}`);
   cardBtn.setAttribute("data-bs-toggle", "modal");
+  cardInfoBtn.setAttribute("data-bs-target", `#infoModal_${modalIdTitle}`);
+  cardInfoBtn.setAttribute("data-bs-toggle", "modal");
 
   modalContainer.setAttribute("id", "shopModal_" + modalIdTitle);
   modalContainer.setAttribute("data-bs-backdrop", "static");
@@ -239,6 +264,21 @@ for (const game of articles) {
   closeButtonFooter.setAttribute("data-bs-dismiss", "modal");
   closeButtonFooter.textContent = "Close";
 
+  modalContainer2.setAttribute("id", "infoModal_" + modalIdTitle);
+  modalContainer2.setAttribute("data-bs-backdrop", "static");
+  modalContainer2.setAttribute("data-bs-keyboard", "false");
+  modalContainer2.setAttribute("tabindex", "-1");
+  modalContainer2.setAttribute("aria-labelledby", "staticBackdropLabel");
+  modalContainer2.setAttribute("aria-hidden", "true");
+  modalTitle2.id = "staticBackdropLabel";
+  modalTitle2.textContent = "More info";
+  closeButton2.type = "button";
+  closeButton2.setAttribute("data-bs-dismiss", "modal");
+  closeButton2.setAttribute("aria-label", "Close");
+  modalBody2.innerHTML = `lorem ipsum`;
+  closeButtonFooter2.setAttribute("data-bs-dismiss", "modal");
+  closeButtonFooter2.textContent = "Close";
+
   cardBtn.onclick = () => {
     addItemToCart(game.title, game.price, game.imgUrl);
   };
@@ -247,6 +287,7 @@ for (const game of articles) {
   cardBody.appendChild(cardPrice);
   cardBody.appendChild(cardText);
   cardBody.appendChild(cardBtn);
+  cardBody.appendChild(cardInfoBtn);
   card.appendChild(cardImg);
   card.appendChild(cardBody);
 
@@ -259,8 +300,18 @@ for (const game of articles) {
   modalDialog.appendChild(modalContent);
   modalContainer.appendChild(modalDialog);
 
+  modalHeader2.appendChild(modalTitle2);
+  modalHeader2.appendChild(closeButton2);
+  modalFooter2.appendChild(closeButtonFooter2);
+  modalContent2.appendChild(modalHeader2);
+  modalContent2.appendChild(modalBody2);
+  modalContent2.appendChild(modalFooter2);
+  modalDialog2.appendChild(modalContent2);
+  modalContainer2.appendChild(modalDialog2);
+
   li.appendChild(card);
   li.appendChild(modalContainer);
+  li.appendChild(modalContainer2);
   articlesList.appendChild(li);
 }
 
@@ -273,6 +324,7 @@ function applyStyles(
   cardPrice,
   cardText,
   cardBtn,
+  cardInfoBtn,
   modalContainer,
   modalDialog,
   modalContent,
@@ -281,7 +333,16 @@ function applyStyles(
   closeButton,
   modalBody,
   modalFooter,
-  closeButtonFooter
+  closeButtonFooter,
+  modalContainer2,
+  modalDialog2,
+  modalContent2,
+  modalHeader2,
+  modalTitle2,
+  closeButton2,
+  modalBody2,
+  modalFooter2,
+  closeButtonFooter2
 ) {
   li.classList.add(
     "list-group-item",
@@ -298,6 +359,7 @@ function applyStyles(
   cardPrice.classList.add("card-title");
   cardText.classList.add("card-text");
   cardBtn.classList.add("btn", "btn-outline-primary");
+  cardInfoBtn.classList.add("btn", "btn-outline-secondary");
 
   modalContainer.classList.add("modal", "fade");
   modalDialog.classList.add("modal-dialog", "modal-dialog-centered");
@@ -307,10 +369,19 @@ function applyStyles(
   closeButton.classList.add("btn-close");
   modalBody.classList.add("modal-body");
   modalFooter.classList.add("modal-footer");
-  closeButtonFooter.classList.add("btn", "btn-primary");
+  closeButtonFooter.classList.add("btn", "btn-outline-primary");
+
+  modalContainer2.classList.add("modal", "fade");
+  modalDialog2.classList.add("modal-dialog", "modal-dialog-centered");
+  modalContent2.classList.add("modal-content");
+  modalHeader2.classList.add("modal-header");
+  modalTitle2.classList.add("modal-title", "fs-5");
+  closeButton2.classList.add("btn-close");
+  modalBody2.classList.add("modal-body");
+  modalFooter2.classList.add("modal-footer");
+  closeButtonFooter2.classList.add("btn", "btn-outline-primary");
 }
 
-//påbörjat
 function addItemToCart(title, price, img) {
   const shoppingCartList = document.querySelector("#shoppingCartDisplayList");
 

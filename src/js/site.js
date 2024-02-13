@@ -233,6 +233,8 @@ for (const game of articles) {
     closeButtonFooter2
   );
 
+  // getBggData(game.title);
+
   const modalIdTitle = game.title.replace(/[&\/\\#, +()$~%.'":*?<>{}]/g, "_");
 
   // console.log(modalIdTitle);
@@ -420,3 +422,50 @@ function removeItemFromCart(title) {
 
   console.log(shoppingCartList);
 }
+
+//https://boardgamegeek.com/wiki/page/BGG_XML_API&redirectedfrom=XML_API#toc4
+
+// async function getBggData(title) {
+//   const url = "https://boardgamegeek.com/xmlapi/search?search=";
+
+//   //Hitta på BGG
+//   const formattedTitle = title.replace(/[&\/\\#, +()$~%.'":*?<>{}]/g, "%20");
+//   const urlEnd = "&exact=1";
+//   const gameUrl = `${url}${formattedTitle}${urlEnd}`;
+//   const response = await fetch(gameUrl);
+//   const data = await response.json();
+
+//   //Presentera data
+//   const gameData = data[0];
+//   response2 = await fetch(gameData);
+//   const data2 = await response2.json();
+
+//   console.log(gameData);
+// }
+
+// async function getBggData(title) {
+//   const url = "https://boardgamegeek.com/xmlapi/search?search=";
+//   const formattedTitle = encodeURIComponent(title);
+//   const urlEnd = "&exact=1";
+//   const gameUrl = `${url}${formattedTitle}${urlEnd}`;
+
+//   try {
+//     const response = await fetch(gameUrl);
+//     const text = await response.text();
+//     const parser = new DOMParser();
+//     const xmlDoc = parser.parseFromString(text, "text/xml");
+
+//     const gameId = xmlDoc.querySelector("item").getAttribute("id");
+//     const gameDataUrl = `https://boardgamegeek.com/xmlapi/boardgame/${gameId}`;
+
+//     const gameResponse = await fetch(gameDataUrl);
+//     const gameText = await gameResponse.text();
+//     const gameXmlDoc = parser.parseFromString(gameText, "text/xml");
+
+//     // Here, you can extract and process the data from gameXmlDoc as needed
+
+//     console.log(gameXmlDoc);
+//   } catch (error) {
+//     console.error("Error fetching data:", error);
+//   }
+// }

@@ -233,7 +233,7 @@ for (const game of articles) {
     closeButtonFooter2
   );
 
-  getBggData(game.title);
+  // getBggData(game.title);
 
   const modalIdTitle = game.title.replace(/[&\/\\#, +()$~%.'":*?<>{}]/g, "_");
 
@@ -441,33 +441,33 @@ function removeItemFromCart(title) {
 //   console.log(gameData);
 // }
 
-async function getBggData(title) {
-  const url = "https://boardgamegeek.com/xmlapi/search?search=";
+// async function getBggData(title) {
+//   const url = "https://boardgamegeek.com/xmlapi/search?search=";
 
-  const formattedTitle = encodeURIComponent(title);
-  const urlEnd = "&exact=1";
-  const gameUrl = `${url}${formattedTitle}${urlEnd}`;
+//   const formattedTitle = encodeURIComponent(title);
+//   const urlEnd = "&exact=1";
+//   const gameUrl = `${url}${formattedTitle}${urlEnd}`;
 
-  const response = await fetch(gameUrl, {
-    method: "GET",
-    mode: "no-cors",
-  });
-  const data = await response.text();
+//   const response = await fetch(gameUrl, {
+//     method: "GET",
+//     mode: "no-cors",
+//   });
+//   const data = await response.text();
 
-  console.log(data);
+//   console.log(data);
 
-  const parser = new DOMParser();
-  const xmlDoc = parser.parseFromString(data, "text/xml");
-  const objectID = xmlDoc
-    .getElementsByName("boardgame")[1]
-    .getAttribute("objectid");
+//   const parser = new DOMParser();
+//   const xmlDoc = parser.parseFromString(data, "text/xml");
+//   const objectID = xmlDoc
+//     .getElementsByName("boardgame")[1]
+//     .getAttribute("objectid");
 
-  const gameDataUrl = `https://boardgamegeek.com/xmlapi/boardgame/${objectID}?stats=1`;
+//   const gameDataUrl = `https://boardgamegeek.com/xmlapi/boardgame/${objectID}?stats=1`;
 
-  const response2 = await fetch(gameDataUrl);
-  const data2 = await response2.text();
+//   const response2 = await fetch(gameDataUrl);
+//   const data2 = await response2.text();
 
-  const xmlDoc2 = parser.parseFromString(data2, "text/xml");
+//   const xmlDoc2 = parser.parseFromString(data2, "text/xml");
 
-  console.log(xmlDoc2);
-}
+//   console.log(xmlDoc2);
+// }

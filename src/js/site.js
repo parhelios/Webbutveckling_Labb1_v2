@@ -213,7 +213,7 @@ for (const game of articles) {
 
   const modalIdTitle = game.title.replace(/[&\/\\#, +()$~%.'":*?<>{}]/g, "_");
 
-  console.log(modalIdTitle);
+  // console.log(modalIdTitle);
 
   cardImg.setAttribute("src", game.imgUrl);
   cardPrice.innerText = `Price: ${game.price} SEK`;
@@ -310,7 +310,7 @@ function applyStyles(
   closeButtonFooter.classList.add("btn", "btn-primary");
 }
 
-//påbörjat men fungerar absolut inte
+//påbörjat
 function addItemToCart(title, price, img) {
   const shoppingCartList = document.querySelector("#shoppingCartDisplayList");
 
@@ -322,9 +322,30 @@ function addItemToCart(title, price, img) {
   shoppingCartArr.push(cartArticle);
 
   const li = document.createElement("li");
-  li.classList.add("list-group-item");
-  li.innerText = `${title} - ${price} SEK`;
+  const removeBtn = document.createElement("button");
 
+  li.classList.add("list-group-item");
+  removeBtn.classList.add("btn", "btn-outline-danger", "float-end");
+  li.innerText = `${title} - ${price} SEK`;
+  removeBtn.innerText = "Remove";
+
+  removeBtn.onclick = () => {
+    removeItemFromCart(title);
+  };
+
+  li.appendChild(removeBtn);
   shoppingCartList.appendChild(li);
   console.log(li);
+}
+
+function removeItemFromCart(title) {
+  const shoppingCartList = document.querySelector("#shoppingCartDisplayList");
+
+  shoppingCartList.childNodes.forEach((child) => {
+    if (child.innerText.includes(title)) {
+      shoppingCartList.removeChild(child);
+    }
+  });
+
+  console.log(shoppingCartList);
 }

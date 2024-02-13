@@ -43,11 +43,17 @@
                 >
               </li>
               <li class="nav-item">
-                <button
+                <!-- <button
                   type="button"
                   class="btn btn-info"
                   data-bs-toggle="modal"
                   data-bs-target="#shoppingCartModal"
+                > -->
+                <button
+                  type="button"
+                  class="btn btn-info"
+                  data-bs-toggle="offcanvas"
+                  data-bs-target="#shoppingCartOffCanvas"
                 >
                   Shopping Cart
                 </button>
@@ -133,7 +139,7 @@
           </div>
 
           <!-- Modal -->
-          <div
+          <!-- <div
             class="modal fade"
             id="shoppingCartModal"
             tabindex="-1"
@@ -162,11 +168,7 @@
                   <ol
                     class="list-group list-group-numbered"
                     id="shoppingCartDisplayList"
-                  >
-                    <li class="list-group-item">A list item</li>
-                    <li class="list-group-item">A list item</li>
-                    <li class="list-group-item">A list item</li>
-                  </ol>
+                  ></ol>
                 </div>
                 <div class="modal-footer">
                   <button
@@ -181,6 +183,49 @@
                   </button>
                 </div>
               </div>
+            </div>
+          </div> -->
+
+          <div
+            class="offcanvas offcanvas-start"
+            tabindex="-1"
+            id="shoppingCartOffCanvas"
+            aria-labelledby="offcanvasExampleLabel"
+          >
+            <div class="offcanvas-header">
+              <h5 class="offcanvas-title" id="offcanvasExampleLabel">
+                Shopping Cart
+              </h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="offcanvas"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="offcanvas-body">
+              <div>
+                <ol
+                  class="list-group list-group-numbered"
+                  id="shoppingCartDisplayList"
+                ></ol>
+              </div>
+              <!-- <div class="dropdown mt-3">
+                <button
+                  class="btn btn-secondary dropdown-toggle"
+                  type="button"
+                  data-bs-toggle="dropdown"
+                >
+                  Dropdown button
+                </button>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Action</a></li>
+                  <li><a class="dropdown-item" href="#">Another action</a></li>
+                  <li>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                  </li>
+                </ul>
+              </div> -->
             </div>
           </div>
 

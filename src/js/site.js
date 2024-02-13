@@ -323,7 +323,7 @@ function addItemToCart(title, price, img) {
 
   const li = document.createElement("li");
   li.classList.add("list-group-item");
-  li.innerText = `${cartArticle.title} - ${cartArticle.price}`;
+  li.innerText = `${title} - ${price} SEK`;
 
   shoppingCartList.appendChild(li);
   console.log(li);

@@ -212,7 +212,9 @@ for (const game of articles) {
     closeButtonFooter
   );
 
-  const modalIdTitle = game.title.replaceAll(" ", "_");
+  const modalIdTitle = game.title.replace(/[&\/\\#, +()$~%.'":*?<>{}]/g, "_");
+
+  console.log(modalIdTitle);
 
   cardImg.setAttribute("src", game.imgUrl);
   cardPrice.innerText = `Price: ${game.price} SEK`;
@@ -230,11 +232,11 @@ for (const game of articles) {
   modalContainer.setAttribute("aria-labelledby", "staticBackdropLabel");
   modalContainer.setAttribute("aria-hidden", "true");
   modalTitle.id = "staticBackdropLabel";
-  modalTitle.textContent = "Modal title";
+  modalTitle.textContent = "Added to cart";
   closeButton.type = "button";
   closeButton.setAttribute("data-bs-dismiss", "modal");
   closeButton.setAttribute("aria-label", "Close");
-  modalBody.innerText = `${game.title} has been added to your cart!`;
+  modalBody.innerHTML = `<b>${game.title}</b> has been added to your cart!`;
   closeButtonFooter.setAttribute("data-bs-dismiss", "modal");
   closeButtonFooter.textContent = "Close";
 

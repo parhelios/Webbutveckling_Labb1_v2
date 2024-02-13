@@ -5,6 +5,9 @@
 img {
   min-width: 200px;
   max-width: 200px;
+  padding: 2em;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 #articles {
@@ -28,4 +31,8 @@ p {
 
 .background-shop {
   background-color: #f6b12d;
+}
+
+.card {
+  width: 400px;
 }

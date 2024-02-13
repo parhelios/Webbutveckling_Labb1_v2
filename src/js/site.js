@@ -242,7 +242,7 @@ for (const game of articles) {
   cardImg.setAttribute("src", game.imgUrl);
   cardPrice.innerHTML = `<b>Price:</b> ${game.price} SEK`;
   cardTitle.innerText = game.title;
-  cardText.innerText = game.info;
+  // cardText.innerText = game.info;
   cardBtn.innerText = "Add to cart";
   cardInfoBtn.innerText = "More info";
 
@@ -277,7 +277,7 @@ for (const game of articles) {
   closeButton2.type = "button";
   closeButton2.setAttribute("data-bs-dismiss", "modal");
   closeButton2.setAttribute("aria-label", "Close");
-  modalBody2.innerHTML = `lorem ipsum`;
+  modalBody2.innerHTML = game.info;
   closeButtonFooter2.setAttribute("data-bs-dismiss", "modal");
   closeButtonFooter2.textContent = "Close";
 

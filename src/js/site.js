@@ -346,7 +346,7 @@ function applyStyles(
 ) {
   li.classList.add(
     "list-group-item",
-    "bg-dark",
+    "background-shop",
     "d-flex",
     "justify-content-center",
     "border",

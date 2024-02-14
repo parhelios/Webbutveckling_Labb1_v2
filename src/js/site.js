@@ -423,6 +423,8 @@ function removeItemFromCart(title) {
 
 //https://boardgamegeek.com/wiki/page/BGG_XML_API&redirectedfrom=XML_API#toc4
 
+//https://boardgamegeek.com/wiki/page/BGG_XML_API2#toc4
+
 // async function getBggData(title) {
 //   const url = "https://boardgamegeek.com/xmlapi/search?search=";
 
@@ -470,4 +472,10 @@ function removeItemFromCart(title) {
 //   const xmlDoc2 = parser.parseFromString(data2, "text/xml");
 
 //   console.log(xmlDoc2);
+// }
+
+
+// async function getBggData(title) {
+//   const url = "https://boardgamegeek.com/xmlapi2/thing?";
+  
 // }

@@ -20,7 +20,7 @@ const articles = [
     "Arkham Horror",
     599,
     "Arkham Horror is a cooperative board game set in H.P. Lovecraft's Cthulhu Mythos, where players investigate supernatural occurrences in the city of Arkham. Players work together to solve mysteries, battle otherworldly creatures, and prevent ancient horrors from awakening. The game combines elements of strategy, storytelling, and horror, creating an immersive and challenging experience.",
-    "https://m.media-amazon.com/images/I/61wUiOvhH2L._AC_SL1075_.jpg"
+    "../content/bg_covers/arkham_horror_3rd_front.png"
   ),
   new Article(
     "Brass Birmingham",
@@ -68,7 +68,7 @@ const articles = [
     "Eclipse",
     1599,
     "A strategic space empire game, players explore the galaxy, expand their empires, and compete for control of resources and territory.",
-    "https://m.media-amazon.com/images/I/611a3s0AUuL._AC_UF894,1000_QL80_.jpg"
+    "../content/bg_covers/eclipse_front.jpg"
   ),
   new Article(
     "Everdell",
@@ -117,8 +117,8 @@ const articles = [
     "Scythe",
     899,
     "A strategic economic game set in an alternate history 1920s Europe, players build empires, develop technologies, and compete for control of territory and resources.",
-    "https://www.spelexperten.com/bilder/artiklar/zoom/STM600_1.jpg"
-  ),
+    "../content/bg_covers/scythe_front.jpg"  
+    ),
   new Article(
     "Spirit Island",
     899,
@@ -129,7 +129,7 @@ const articles = [
     "Terraforming Mars",
     599,
     "A strategic economic game set on the Red Planet, players compete to transform Mars into a habitable world, balancing resources and infrastructure for maximum points.",
-    "https://www.proshop.se/Images/915x900/2806058_694524a0294e.jpg"
+    "../content/bg_covers/terraforming_mars_front.jpg"
   ),
   new Article(
     "The Crew",
@@ -153,7 +153,7 @@ const articles = [
     "Wingspan",
     699,
     "A visually stunning engine-building game centered around bird watching, players attract and care for a variety of bird species to score points.",
-    "https://www.spelexperten.com/bilder/artiklar/zoom/STM910SE_1.jpg"
+    "../content/bg_covers/wingspan_front.png"
   ),
   new Article(
     "Zombicide",
@@ -233,7 +233,7 @@ for (const game of articles) {
     closeButtonFooter2
   );
 
-  // getBggData(game.title);
+  getBggData(game.title);
 
   const modalIdTitle = game.title.replace(/[&\/\\#, +()$~%.'":*?<>{}]/g, "_");
 
@@ -443,39 +443,32 @@ function removeItemFromCart(title) {
 //   console.log(gameData);
 // }
 
-// async function getBggData(title) {
-//   const url = "https://boardgamegeek.com/xmlapi/search?search=";
+async function getBggData(title) {
 
-//   const formattedTitle = encodeURIComponent(title);
-//   const urlEnd = "&exact=1";
-//   const gameUrl = `${url}${formattedTitle}${urlEnd}`;
+  const formattedTitle = encodeURIComponent(title);
 
-//   const response = await fetch(gameUrl, {
-//     method: "GET",
-//     mode: "no-cors",
-//   });
-//   const data = await response.text();
+  const url = `https://boardgamegeek.com/xmlapi/search?search=${formattedTitle}&exact=1`;
 
-//   console.log(data);
+  const response = await fetch(url, {
+    method: "GET",
+    mode: "no-cors",
+  });
+  const data = await response.text();
 
-//   const parser = new DOMParser();
-//   const xmlDoc = parser.parseFromString(data, "text/xml");
-//   const objectID = xmlDoc
-//     .getElementsByName("boardgame")[1]
-//     .getAttribute("objectid");
+  console.log(data);
 
-//   const gameDataUrl = `https://boardgamegeek.com/xmlapi/boardgame/${objectID}?stats=1`;
+  const parser = new DOMParser();
+  const xmlDoc = parser.parseFromString(data, "text/xml");
+  const objectID = xmlDoc
+    .getElementsByName("boardgame")[1]
+    .getAttribute("objectid");
 
-//   const response2 = await fetch(gameDataUrl);
-//   const data2 = await response2.text();
+  const gameDataUrl = `https://boardgamegeek.com/xmlapi/boardgame/${objectID}?stats=1`;
 
-//   const xmlDoc2 = parser.parseFromString(data2, "text/xml");
+  const response2 = await fetch(gameDataUrl);
+  const data2 = await response2.text();
 
-//   console.log(xmlDoc2);
-// }
+  const xmlDoc2 = parser.parseFromString(data2, "text/xml");
 
-
-// async function getBggData(title) {
-//   const url = "https://boardgamegeek.com/xmlapi2/thing?";
-  
-// }
+  console.log(xmlDoc2);
+}

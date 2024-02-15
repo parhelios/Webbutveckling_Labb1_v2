@@ -17,3 +17,7 @@ p {
 .background-color {
   background-color: #de7c25;
 }
+
+.spacer {
+  height: 80px;
+}

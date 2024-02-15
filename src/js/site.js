@@ -166,11 +166,9 @@ const articles = [
   ),
 ];
 
-const shoppingCartArr = [];
+let shoppingCartArr = [];
 
 const articlesList = document.querySelector("#articles");
-
-// console.log(articles);
 
 for (const game of articles) {
   //Skapa kortet
@@ -235,10 +233,6 @@ for (const game of articles) {
     modalFooter2,
     closeButtonFooter2
   );
-
-  
-  // getBggData(game.title);
-
 
   const modalIdTitle = game.title.replace(/[&\/\\#, +()$~%.'":*?<>{}]/g, "_");
 
@@ -459,11 +453,11 @@ async function getCat() {
 }
 
 const clearCartBtn = document.querySelector("#clearCartBtn");
+const shoppingCartList = document.querySelector("#shoppingCartDisplayList");
 
-clearCartBtn.onclick = () => {
-  shoppingCartArr = [];
+clearCartBtn.addEventListener('click', function() {
 
-  const shoppingCartList = document.querySelector("#shoppingCartDisplayList");
-
-  shoppingCartList.innerText = "";
-};  
+    console.log(shoppingCartArr);
+    shoppingCartArr = [];
+    shoppingCartList.innerText = "";
+});

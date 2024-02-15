@@ -390,41 +390,57 @@ function applyStyles(
 function addItemToCart(title, price, img) {
   const shoppingCartList = document.querySelector("#shoppingCartDisplayList");
 
+  shoppingCartList.innerText = "";
+
   const cartArticle = new CartArticle(
-    title.innerText,
-    price.innerText,
-    img.src
+    title.innerText = title,
+    price.innerText = price,
+    img.src = img
   );
   shoppingCartArr.push(cartArticle);
 
-  const li = document.createElement("li");
-  const removeBtn = document.createElement("button");
 
-  li.classList.add("list-group-item");
-  removeBtn.classList.add("btn", "btn-outline-danger", "float-end");
-  li.innerText = `${title} - ${price} SEK`;
-  removeBtn.innerText = "Remove";
-
-  removeBtn.onclick = () => {
-    removeItemFromCart(title);
-  };
-
-  li.appendChild(removeBtn);
-  shoppingCartList.appendChild(li);
-  console.log(li);
+  for (const article of shoppingCartArr) {
+    const tr = document.createElement("tr");
+    const tdTitle = document.createElement("td");
+    const tdPrice = document.createElement("td");
+    const tdRemove = document.createElement("td");
+    const removeBtn = document.createElement("button");
+  
+    tdTitle.innerText = article.title;
+    tdPrice.innerText = `${article.price} SEK`;
+    removeBtn.classList.add("btn", "btn-outline-danger", "float-end");
+    removeBtn.innerText = "Remove";
+  
+    removeBtn.onclick = () => {
+      removeItemFromCart(article.title);
+    };
+  
+    tdRemove.appendChild(removeBtn);
+    tr.appendChild(tdTitle);
+    tr.appendChild(tdPrice);
+    tr.appendChild(tdRemove);
+    shoppingCartList.appendChild(tr);
+  }
 }
 
 function removeItemFromCart(title) {
   const shoppingCartList = document.querySelector("#shoppingCartDisplayList");
 
-  shoppingCartList.childNodes.forEach((child) => {
-    if (child.innerText.includes(title)) {
-      shoppingCartList.removeChild(child);
-    }
+  const indexToRemove = shoppingCartArr.findIndex(item => item.title === title);
+  if (indexToRemove !== -1) {
+    shoppingCartArr.splice(indexToRemove, 1);
+  }
+
+    shoppingCartList.childNodes.forEach((child) => {
+      if (child.innerText && child.innerText.includes(title)) {
+        shoppingCartList.removeChild(child);
+      }
   });
 
-  console.log(shoppingCartList);
+  console.log(shoppingCartArr); 
 }
+
 
 async function getCat() {
   const catContainer = document.querySelector("#catquoteoftheday");
@@ -441,3 +457,13 @@ async function getCat() {
   p.innerText = randomText;
   catContainer.appendChild(p);
 }
+
+const clearCartBtn = document.querySelector("#clearCartBtn");
+
+clearCartBtn.onclick = () => {
+  shoppingCartArr = [];
+
+  const shoppingCartList = document.querySelector("#shoppingCartDisplayList");
+
+  shoppingCartList.innerText = "";
+};  

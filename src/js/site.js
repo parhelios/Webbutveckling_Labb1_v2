@@ -15,6 +15,9 @@ class CartArticle {
   }
 }
 
+getCat();
+
+
 const articles = [
   new Article(
     "Arkham Horror",
@@ -167,7 +170,7 @@ const shoppingCartArr = [];
 
 const articlesList = document.querySelector("#articles");
 
-console.log(articles);
+// console.log(articles);
 
 for (const game of articles) {
   //Skapa kortet
@@ -232,6 +235,8 @@ for (const game of articles) {
     modalFooter2,
     closeButtonFooter2
   );
+
+  
   // getBggData(game.title);
 
 
@@ -421,6 +426,24 @@ function removeItemFromCart(title) {
   console.log(shoppingCartList);
 }
 
+async function getCat() {
+  const catContainer = document.querySelector("#catquoteoftheday");
+
+  const url = "https://cat-fact.herokuapp.com/facts";
+  const response = await fetch(url);
+  const data = await response.json(); 
+
+  const randomIndex = Math.floor(Math.random() * 5); 
+  console.log(randomIndex);
+  const randomText = data[randomIndex].text;
+
+  const p = document.createElement("p");
+  p.classList.add("fw-light", "mx-auto");
+  p.innerText = randomText;
+  catContainer.appendChild(p);
+}
+
+
 //https://boardgamegeek.com/wiki/page/BGG_XML_API&redirectedfrom=XML_API#toc4
 
 //https://boardgamegeek.com/wiki/page/BGG_XML_API2#toc4
@@ -442,35 +465,37 @@ function removeItemFromCart(title) {
 
 //   console.log(gameData);
 // }
-getBggData("Carcassonne");
 
-async function getBggData(title) {
-console.log("SADBKASDHK");
-  const formattedTitle = encodeURIComponent(title);
 
-  // const url = `https://boardgamegeek.com/xmlapi/search?search=${formattedTitle}&exact=1`;
-  const url = `https://boardgamegeek.com/xmlapi/search?search=Carcassonne&exact=1`;
+// async function getBggData(title) {
+// // const formattedTitle = encodeURIComponent(title);
+//   const formattedTitle = title.replace(/[&\/\\#, +()$~%.'":*?<>{}]/g, "+");
 
-  const response = await fetch(url, {
-    method: "GET",
-    mode: "no-cors",
-  });
+//   // const url = `https://boardgamegeek.com/xmlapi/search?search=${formattedTitle}&exact=1`;
+//   // const url = `https://boardgamegeek.com/xmlapi/search?search=Carcassonne&exact=1`;
+//   const url = `https://boardgamegeek.com/xmlapi2/search?query=Carcassonne&exact=1`;
+
+//   const response = await fetch(url, {
+//     method: "GET",
+//     mode: "no-cors",
+//   });
   
-  const data = await response.text();
+//   const data = await response.text();
 
-  const parser = new DOMParser();
-  const xmlDoc = parser.parseFromString(data, "application/xml");
-  console.log(xmlDoc);
-  const objectID = xmlDoc
-    .getElementsByName("boardgame")[1]
-    .getAttribute("objectid");
+//   const parser = new DOMParser();
+//   const xmlDoc = parser.parseFromString(data, "text/xml");
+//   console.log(xmlDoc);
+//   const objectID = xmlDoc
+//     .getElementsByName("boardgame")
+//     .getAttribute("id");
 
-  const gameDataUrl = `https://boardgamegeek.com/xmlapi/boardgame/${objectID}?stats=1`;
+//   // const gameDataUrl = `https://boardgamegeek.com/xmlapi/boardgame/${objectID}?stats=1`;
+//   const gameDataUrl = `https://boardgamegeek.com/xmlapi2/thing?id=${objectID}&stats=1`;
 
-  const response2 = await fetch(gameDataUrl);
-  const data2 = await response2.text();
+//   const response2 = await fetch(gameDataUrl);
+//   const data2 = await response2.text();
 
-  const xmlDoc2 = parser.parseFromString(data2, "text/xml");
+//   const xmlDoc2 = parser.parseFromString(data2, "text/xml");
 
-  console.log(xmlDoc2);
-}
+//   console.log(xmlDoc2);
+// }

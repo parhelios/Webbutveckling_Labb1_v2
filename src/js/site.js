@@ -62,7 +62,7 @@ const articles = [
     "Dune",
     699,
     "A strategic negotiation game set in the universe of Frank Herbert's Dune, players take on the roles of different factions competing for control of the desert planet Arrakis.",
-    "https://www.spelexperten.com/bilder/artiklar/zoom/GFDUNE01-BN_1.jpg"
+    "../content/bg_covers/dune_front.jpg"
   ),
   new Article(
     "Eclipse",
@@ -111,7 +111,7 @@ const articles = [
     "Pandemic",
     299,
     "A cooperative board game set in a world threatened by deadly diseases, players work together to contain outbreaks and find cures before it's too late.",
-    "https://www.spelexperten.com/bilder/artiklar/zoom/ZMG71100_1.jpg"
+    "../content/bg_covers/pandemic_front.jpg"
   ),
   new Article(
     "Scythe",
@@ -232,8 +232,8 @@ for (const game of articles) {
     modalFooter2,
     closeButtonFooter2
   );
+  // getBggData(game.title);
 
-  getBggData(game.title);
 
   const modalIdTitle = game.title.replace(/[&\/\\#, +()$~%.'":*?<>{}]/g, "_");
 
@@ -442,23 +442,25 @@ function removeItemFromCart(title) {
 
 //   console.log(gameData);
 // }
+getBggData("Carcassonne");
 
 async function getBggData(title) {
-
+console.log("SADBKASDHK");
   const formattedTitle = encodeURIComponent(title);
 
-  const url = `https://boardgamegeek.com/xmlapi/search?search=${formattedTitle}&exact=1`;
+  // const url = `https://boardgamegeek.com/xmlapi/search?search=${formattedTitle}&exact=1`;
+  const url = `https://boardgamegeek.com/xmlapi/search?search=Carcassonne&exact=1`;
 
   const response = await fetch(url, {
     method: "GET",
     mode: "no-cors",
   });
+  
   const data = await response.text();
 
-  console.log(data);
-
   const parser = new DOMParser();
-  const xmlDoc = parser.parseFromString(data, "text/xml");
+  const xmlDoc = parser.parseFromString(data, "application/xml");
+  console.log(xmlDoc);
   const objectID = xmlDoc
     .getElementsByName("boardgame")[1]
     .getAttribute("objectid");

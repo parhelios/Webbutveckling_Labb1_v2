@@ -32,3 +32,9 @@ p {
 .card {
   width: 400px;
 }
+
+.place-content-bottom{
+  position : absolute;
+  bottom   : 0
+}
+

@@ -353,12 +353,12 @@ function applyStyles(
   );
   card.classList.add("card");
   cardImg.classList.add("card-img-top");
-  cardBody.classList.add("card-body");
+  cardBody.classList.add("card-body", "place-content-bottom", "mt-9");
   cardTitle.classList.add("card-title");
   cardPrice.classList.add("card-title");
   cardText.classList.add("card-text");
-  cardBtn.classList.add("btn", "btn-outline-primary");
-  cardInfoBtn.classList.add("btn", "btn-outline-secondary");
+  cardBtn.classList.add("btn", "btn-outline-primary", "ms-1");
+  cardInfoBtn.classList.add("btn", "btn-outline-secondary", "me-1");
 
   modalContainer.classList.add("modal", "fade");
   modalDialog.classList.add("modal-dialog", "modal-dialog-centered");
